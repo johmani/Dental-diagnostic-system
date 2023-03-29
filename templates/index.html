@@ -6,133 +6,154 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!----======== CSS ======== -->
-    <link rel="stylesheet" href="/static/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="/static/css/Root.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/static/css/Toggle.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/static/css/Slider.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/static/css/ListVeiw.css"
+    />
+    <link
+    rel="stylesheet"
+    href="/static/css/ImageDragArea.css"
+    />
+    <link
+    rel="stylesheet"
+    href="/static/css/VeiwPort.css"
+    />
+    <link
+    rel="stylesheet"
+    href="/static/css/Button.css"
+    />
+    
 
-    <!----===== Boxicons CSS ===== -->
+    <!----===== Boxicons  CSS ===== -->
     <link
       href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
       rel="stylesheet"
     />
-
-    !--
     <title>Dental diagnostic system</title>
   </head>
 
   <body>
-    <nav class="sidebar close">
-      <header>
-        <div class="image-text">
-          <span class="image">
-            <img class="hi" src="/static/images/logo.png" alt="" />
-          </span>
+    <header class="header">
+      <button class="button" id="detection">
+        <i class="bx bx-target-lock icon"></i>
+        <span class="text">Detect</span>
+      </button>
 
-          <div class="text logo-text">
-            <span class="name">Dental lab</span>
-            <span class="profession">object detection</span>
+      <div class="slider">
+        <i class="bx bxs-adjust-alt icon"></i>
+        <span class="text">Contrast</span>
+        <input
+          type="range"
+          id="contrast-slider"
+          min="0"
+          max="100"
+          value="50"
+          oninput="contrastSlider()"
+        />
+        <div class="slider-value" id="contrast-value">0</div>
+      </div>
+
+      <div class="slider">
+        <i class="bx bx-brightness-half icon"></i>
+        <span class="text">Brightness</span>
+        <input
+          type="range"
+          id="brightness-slider"
+          min="0"
+          max="100"
+          value="50"
+          oninput="brightnessSlider()"
+        />
+        <div class="slider-value" id="brightness-value">0</div>
+      </div>
+    </header>
+
+    <div class="page">
+      <aside class="left">
+      </aside>
+      <main class="main">
+        <canvas id="veiw-port" class="veiw-port" style="display: none"></canvas>
+        <div class="popup" id="popup">
+          <div class="top-popup" id="top-popup">
+            <span class="text-popup" id="class-popup"></span>
+            <span class="text-popup" id="confidence-popup"></span>
+          </div>
+          <div class="image-popup" id="image-popup"></div>
+        </div>
+        <div class="image-drag-area" id="image-drag-area" >
+          <div id="border" class="border">
+            <i class="bx bx-cloud-upload icon icon"></i>
+            <input id="upload" type="file" />
+            <label for="upload"
+              ><strong>Choose a file</strong> or drag it here.</label
+            >
           </div>
         </div>
-
-        <i class="bx bx-chevron-right toggle"></i>
-      </header>
-
-      <div class="menu-bar">
-        <div class="menu">
-          <li class="search-box">
-            <i class="bx bx-search icon"></i>
-            <input type="text" placeholder="Search..." />
+      </main>
+      <aside class="right">
+        <div class="box" id="box">
+          <span class="text">filters</span>
+        </div>
+        <ul class = "list-veiw" id = "toggle-list">
+          <li class="toggle">
+            <span class="text">Teeth</span>
+            <input type="checkbox" id="teeth-Toggle" />
+            <label><i></i></label>
+            <span></span>
+          </li>
+          <li class="toggle">
+            <span class="text">Implant</span>
+            <input type="checkbox"  id="implant-Toggle" />
+            <label><i></i></label>
+            <span></span>
           </li>
 
-          <ul class="menu-links">
-            <li class="nav-link">
-              <a href="#">
-                <i class="bx bx-brightness-half icon"></i>
-                <span class="text nav-text">Brightness</span>
-              </a>
-            </li>
-
-            <li class="nav-link">
-              <a href="#">
-                <i class="bx bxs-adjust-alt icon"></i>
-
-                <span class="text nav-text">Contrast</span>
-              </a>
-            </li>
-
-            <li class="nav-link">
-              <a href="#">
-                <i class="bx bx-analyse icon"></i>
-                <span class="text nav-text">Tooth State</span>
-              </a>
-            </li>
-
-            <li class="nav-link" id="detection">
-              <a href="#">
-                <i class="bx bx-target-lock icon"></i>
-                <span class="text nav-text">detection</span>
-              </a>
-            </li>
-
-            <li class="nav-link">
-              <a href="#">
-                <i class="bx bx-heart icon"></i>
-                <span class="text nav-text">Likes</span>
-              </a>
-            </li>
-
-            <li class="nav-link">
-              <a href="#">
-                <i class="bx bx-wallet icon"></i>
-                <span class="text nav-text">Wallets</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="bottom-content">
-          <li class="">
-            <a href="#">
-              <i class="bx bx-log-out icon"></i>
-              <span class="text nav-text">Logout</span>
-            </a>
+          <li class="toggle">
+            <span class="text">Filling</span>
+            <input type="checkbox"  id="filling-Toggle" />
+            <label><i></i></label>
+            <span></span>
           </li>
-
-          <li class="mode">
-            <div class="sun-moon">
-              <i class="bx bx-moon icon moon"></i>
-              <i class="bx bx-sun icon sun"></i>
-            </div>
-            <span class="mode-text text">Dark mode</span>
-
-            <div class="toggle-switch" id="toggle-switch">
-              <span class="switch"></span>
-            </div>
-          </li>
+          <li class="toggle">
+            <span class="text">Root Canal Obturation</span>
+            <input type="checkbox"  id="root-Canal-Obturation-Toggle" />
+            <label><i></i></label>
+            <span></span>
+          </li>   
+          <li class="toggle">
+            <span class="text">Crown Bridge</span>
+            <input type="checkbox"  id="Crown-bridge-Toggle" />
+            <label><i></i></label>
+            <span></span>
+          </li>   
+        </ul>
+        <div class="box" id="box">
+          <span class="text">fixed teeth detection</span>
         </div>
-      </div>
-    </nav>
-
-    <section class="home">
-      <div class="text">Dental diagnostic</div>
-
-      <div id="wrapper" class="center anim">
-        <div id="decorator" class="border anim center">
-          <i class="bx bx-cloud-upload icon icon"></i>
-          <input id="upload" type="file" />
-          <label for="upload"
-            ><strong>Choose a file</strong> or drag it here.</label
-          >
+        <ul class = "list-veiw" id="fixed-teeth-detection-list">
+        </ul>
+        <div class="box" id="box">
+          <span class="text">teeth detection</span>
         </div>
-      </div>
-      <canvas
-        id="target"
-        class="veiw-port"
-        height="400"
-        width="600"
-        style="display: none"
-      ></canvas>
-    </section>
+        <ul class = "list-veiw" id="teeth-detection-list">
+        </ul>
+      </aside>
+    </div>
   </body>
   <script src="/scripts/Elements.js"></script>
+  <script src="/scripts/imageFilter.js"></script>
   <script src="/scripts/controler.js"></script>
   <script src="/scripts/imageUpLoader.js"></script>
   <script src="/scripts/canvas.js"></script>

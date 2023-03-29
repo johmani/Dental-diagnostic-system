@@ -1,0 +1,84 @@
+.slider {
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  padding: 12px 16px;
+  transition: 0.5s;
+  display: flex;
+  width: 200px;
+  float: left;
+}
+
+.slider .icon {
+  color: var(--tertiary-color);
+  font-size: 12px;
+  display: flex;
+}
+
+.slider .text {
+  display: flex;
+  color: var(--tertiary-color);
+  padding: 0 5px 0 5px;
+  white-space: nowrap;
+  font-weight: 100;
+  font-size: 9px;
+  opacity: 1;
+}
+
+input[type="range"] {
+  background-color: #da1d1d;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+  border-radius: 8px;
+  display: block;
+  outline: none;
+  height: 2px;
+  width: 90%;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  height: 8px;
+}
+
+
+
+
+input[type="range"]::-webkit-slider-thumb {
+  background-color: var(--tertiary-color);
+  -webkit-appearance: none;
+  border-radius: 100%;
+  margin-top: -1px;
+  cursor: pointer;
+  height: 10px;
+  width: 10px;
+}
+
+input[type="range"]:active::-webkit-slider-thumb {
+  background-color: var(--primary-color);
+  border: 3px solid var(--tertiary-color);
+}
+
+.slider-value {
+  color: var(--tertiary-color);
+  padding: 0 5px 0 5px;
+  font-size: 9px;
+}
+
+
+/*__________________ HTML CODE ________________
+  <div class="slider">
+     <i class="bx bx-brightness-half icon"></i>
+     <span class="text">slider name</span>
+     <input
+      type="range"
+      id="slider id"
+      min="0"
+      max="100"
+      value="100"
+      oninput="function to call()"
+    />
+  <div class="slider-value" id="slider-name-value">0</div>
+</div>
+*/

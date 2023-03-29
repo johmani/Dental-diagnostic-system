@@ -15,21 +15,19 @@ window.addEventListener(
   false
 );
 
-wrapper.ondragover = function (eventArgs) {
-  var wrapper = document.getElementById("wrapper");
-  if (!wrapper.classList.contains("dragover")) {
-    wrapper.classList.add("dragover");
+contaner.ondragover = function (eventArgs) {
+  if (!contaner.classList.contains("dragover")) {
+    contaner.classList.add("dragover");
   }
 };
 
-wrapper.ondragleave = function (eventArgs) {
-  var wrapper = document.getElementById("wrapper");
-  if (wrapper.classList.contains("dragover")) {
-    wrapper.classList.remove("dragover");
+contaner.ondragleave = function (eventArgs) {
+  if (contaner.classList.contains("dragover")) {
+    contaner.classList.remove("dragover");
   }
 };
 
-wrapper.ondrop = function (eventArgs) {
+contaner.ondrop = function (eventArgs) {
   var dt = eventArgs.dataTransfer;
   if (dt.items.length == 1) {
     if (dt.items[0].kind == "file") {
@@ -49,9 +47,8 @@ upload.onchange = function (eventArgs) {
 };
 
 function draw() {
-  document.getElementById("wrapper").style.display = "none";
-  document.getElementById("target").style.display = "block";
-  var canvas = document.querySelector("canvas");
+  contaner.style.display = "none";
+  canvas.style.display = "block";
   canvas.width = 1000;
   canvas.height = 500;
   var ctx = canvas.getContext("2d");
